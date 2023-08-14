@@ -1,309 +1,96 @@
+managementgroup = "Contos"
+childgroupA0    = "decom"
+childgroupB0    = "platform"
+childgroupB1    = "connectivity"
+childgroupB3    = "identity"
+childgroupB2    = "management"
+childgroupC0    = "sandbox"
+childgroupD0    = "workloads"
+childgroupD1    = "bs1"
+childgroupD2    = "bs2"/*///*/
+resource-group-name = "connectivity-rg"
+location        = "East US"
+vnet-name       = "conn-vnet"
+vnet-address-space = ["20.0.0.0/16"]
+subnet-name     = "subnet-1"
+subnet-address-prefix = ["20.0.0.0/26"]/*//*/
 
-variable "managementgroup" {
-  type = string
-  
-}
-variable "childgroupA0" { 
-  type = string
-  
-}
-variable "childgroupB0" { 
-  type = string
-  
-}
-variable "childgroupB1" { 
-  type = string
-  
-}
-variable "childgroupB3" { 
-  type = string
-  
-}
-variable "childgroupB2" { 
-  type = string
-  
-}
-variable "childgroupC0" { 
-  type = string
-  
-}
-variable "childgroupD0" { 
-  type = string
-  
-}
-variable "childgroupD1" { 
-  type = string
+NIC_name = "nic"
+ip_configuration_name = "internal"
+IP_allocation = "Dynamic"
+encryption_algorithm = "RSA"
+rsa_bits = 4096
+vm_name = "test-terraform-vm"
+size = "Standard_F2"
+username = "vm-1"
+OS_disk_caching = "ReadWrite"
+stgacc_type = "Standard_LRS"
+publisher = "Canonical"
+offer = "0001-com-ubuntu-server-focal"
+vm_sku = "20_04-lts"
+OS_version = "latest"/*////*/
 
-}
-variable "childgroupD2" { 
-  type = string
-  
-}/*///*/
-variable "resource-group-name" {
-    type = string
-    description = "Resource Group Name"
-}
 
-variable "location" {
-    type = string
-    description = "Location for deployment"
-}
+web-nsg-sr1-name = "sr1-rule1"
+web-nsg-sr1-priority = "101"
+web-nsg-sr1-direction = "Inbound"
+web-nsg-sr1-access = "Allow"
+web-nsg-sr1-protocol = "Tcp"
+web-nsg-sr1-source_address_prefix = "*"
+web-nsg-sr1-source_port_range = "*"
+web-nsg-sr1-destination_address_prefix = "*"
+web-nsg-sr1-destination_port_range = "22"
+//location = "centralindia"
+//resource_group = "test"
+web-nsg-sr2-name = "sr2-rule2"
+web-nsg-sr2-priority = "100"
+web-nsg-sr2-direction = "Outbound"
+web-nsg-sr2-access = "Allow"
+web-nsg-sr2-protocol = "Tcp"
+web-nsg-sr2-source_address_prefix = "192.168.3.0/24"
+web-nsg-sr2-source_port_range = "*"
+web-nsg-sr2-destination_address_prefix = "*"
+web-nsg-sr2-destination_port_range = "22"/*//*/
 
-variable "vnet-name" {
-    type = string
-    description = "Virtual Network Name"
-}
-
-variable "vnet-address-space" {
-    type = list(string)
-    description = "Address space of virtual network"
-}
-variable "subnet-name" {
-    type = string
-    description = "Name of vnet subnet"
-}
-
-variable "subnet-address-prefix" {
-    type = list(string)
-    description = "Address prefix of vnet subnet"
-}/*////*/
-
-variable "NIC_name" {
-    type = string
-    description = "Name of the Network Interface Card"
-}
-
-variable "ip_configuration_name" {
-    type = string
-    description = "Private IP configuration name"
-}
-
-variable "IP_allocation" {
-    type = string
-    description = "Allocation method of IP address for virtual machine"
-}
-
-variable "encryption_algorithm" {
-    type = string
-    description = "Public Key encryption algorithm"
-}
-
-variable "rsa_bits" {
-    type = number
-    description = "Number of RSA bits"
-}
-
-variable "vm_name" {
-    type = string
-    description = "Name of virtual machine"
-}
-
-variable "size" {
-    type = string
-    description = "Disk size and CPU of virtual machine"
-}
-
-variable "username" {
-    type = string
-    description = "Admin username for virtual machine"
-}
-
-variable "OS_disk_caching" {
-    type = string
-    description = "Caching type of OS disk"
-}
-
-variable "stgacc_type" {
-    type = string
-    description = "Storage account type of OS disk in virtual machine"
-}
-
-variable "publisher" {
-    type = string
-    description = "Publisher name of virtual machine source image"
-}
-
-variable "offer" {
-    type = string
-    description = "virtual machine source image OS"
-}
-
-variable "vm_sku" {
-    type = string
-    description = "SKU of virtual machine OS"
-}
-
-variable "OS_version" {
-    type = string
-    description = "OS version of virtual machine"
-}/*///*/
-variable "web-nsg-sr1-name" {
-  type = string
-}
-variable "web-nsg-sr1-priority" {
-  type = string
-}
-variable "web-nsg-sr1-direction" {
-  type = string
-}
-variable "web-nsg-sr1-access" {
-  type = string
-}
-variable "web-nsg-sr1-protocol" {
-  type = string
-}
-variable "web-nsg-sr1-source_address_prefix" {
-  type = string
-}
-variable "web-nsg-sr1-source_port_range" {
-  type = string
-}
-variable "web-nsg-sr1-destination_address_prefix" {
-  type = string
-} 
-variable "web-nsg-sr1-destination_port_range" {
-  type = string
-}
-variable "web-nsg-sr2-name" {
-  type = string
-}
-  variable "web-nsg-sr2-priority" {
-  type = string
-}
-variable "web-nsg-sr2-direction" {
-  type = string
-}
-variable "web-nsg-sr2-access" {
-  type = string
-}
-variable "web-nsg-sr2-protocol" {
-  type = string
-}
-variable "web-nsg-sr2-source_address_prefix" {
-  type = string
-}
-variable "web-nsg-sr2-source_port_range" {
-  type = string
-}
-variable "web-nsg-sr2-destination_address_prefix" {
-  type = string
-} 
-variable "web-nsg-sr2-destination_port_range" {
-  type = string
-}
-
-variable "web_subnet_id" {
-  type = string
-}
-/*//*/
-variable "app-nsg-sr1-name" {
-  type =string
-}
-variable "app-nsg-sr1-priority" {
-  type = string
-}
-variable "app-nsg-sr1-protocol" {
-  type = string
-}
-variable "app-nsg-sr1-access" {
-  type = string
-}
-variable "app-nsg-sr1-direction" {
-  type = string
-}
-variable "app-nsg-sr1-destination_address_prefix" {
-  type = string
-}
-variable "app-nsg-sr1-destination_port_range" {
-  type = string
-}
-variable "app-nsg-sr1-source_address_prefix" {
-  type = string
-}
-variable "app-nsg-sr1-source_port_range" {
-  type = string
-}
-variable "app-nsg-sr2-name" {
-  type =string
-}
-variable "app-nsg-sr2-priority" {
-  type = string
-}
-variable "app-nsg-sr2-protocol" {
-  type = string
-}
-variable "app-nsg-sr2-access" {
-  type = string
-}
-variable "app-nsg-sr2-direction" {
-  type = string
-}
-variable "app-nsg-sr2-destination_address_prefix" {
-  type = string
-}
-variable "app-nsg-sr2-destination_port_range" {
-  type = string
-}
-variable "app-nsg-sr2-source_address_prefix" {
-  type = string
-}
-variable "app-nsg-sr2-source_port_range" {
-  type = string
-}/*//*/
-variable "app_subnet_id" {
-  type = string
-}
-variable "db-nsg-sr1-name" {
-  type =string  
-}
-variable "db-nsg-sr1-priority" {
-  type = string
-}
-variable "db-nsg-sr1-protocol" {
-  type = string
-}
-variable "db-nsg-sr1-access" {
-  type = string
-}
-variable "db-nsg-sr1-direction" {
-  type = string
-}
-variable "db-nsg-sr1-source_address_prefix" {
-  type = string
-}
-variable "db-nsg-sr1-source_port_range" {
-  type = string
-}
-variable "db-nsg-sr1-destination_address_prefix" {
-  type = string
-}
-variable "db-nsg-sr1-destination_port_range" {
-  type = string
-}/*//*/
-variable "db-nsg-sr2-name" {
-  type =string  
-}
-variable "db-nsg-sr2-priority" {
-  type = string
-}
-variable "db-nsg-sr2-protocol" {
-  type = string
-}
-variable "db-nsg-sr2-access" {
-  type = string
-}
-variable "db-nsg-sr2-direction" {
-  type = string
-}
-variable "db-nsg-sr2-source_address_prefix" {
-  type = string
-}
-variable "db-nsg-sr2-source_port_range" {
-  type = string
-}
-variable "db-nsg-sr2-destination_address_prefix" {
-  type = string
-}
-variable "db-nsg-sr2-destination_port_range" {
-  type = string
-}
+web_subnet_id = "192.168.3.0/24"
+app-nsg-sr1-name = "sr1-app-r1"
+app-nsg-sr1-priority = "100"
+app-nsg-sr1-access = "Allow"
+app-nsg-sr1-protocol = "Tcp"
+app-nsg-sr1-direction = "Inbound"
+app-nsg-sr1-source_address_prefix = "192.168.1.0/24"
+app-nsg-sr1-source_port_range = "*"
+app-nsg-sr1-destination_address_prefix = "*"
+app-nsg-sr1-destination_port_range = "22"/*//*/
+app-nsg-sr2-name = "sr2-app-r2"
+app-nsg-sr2-priority = "101"
+app-nsg-sr2-direction = "Outbound"
+app-nsg-sr2-protocol = "Tcp"
+app-nsg-sr2-access = "Allow"
+app-nsg-sr2-source_address_prefix = "192.168.1.0/24"
+app-nsg-sr2-source_port_range = "*"
+app-nsg-sr2-destination_address_prefix = "*"
+app-nsg-sr2-destination_port_range = "22"/*//*/
+db-nsg-sr1-name = "sr1-db-r1"
+db-nsg-sr1-priority = "101"
+db-nsg-sr1-protocol = "Tcp"
+db-nsg-sr1-direction = "Inbound"
+db-nsg-sr1-access = "Allow"
+db-nsg-sr1-destination_address_prefix = "*"
+db-nsg-sr1-destination_port_range = "3306"
+db-nsg-sr1-source_address_prefix = "192.168.1.0/24"
+db-nsg-sr1-source_port_range = "*"/*//*/
+db-nsg-sr2-name = "sr2-db-r2"
+db-nsg-sr2-priority = "102"
+db-nsg-sr2-protocol = "Tcp"
+db-nsg-sr2-direction = "Outbound"
+db-nsg-sr2-access = "Allow"
+db-nsg-sr2-source_address_prefix = "192.168.1.0/24"
+db-nsg-sr2-source_port_range = "*"
+db-nsg-sr2-destination_port_range = "3306"
+db-nsg-sr2-destination_address_prefix = "*"/*//*/
+app_subnet_id = "192.168.2.0/24"
+primary_database = "sql-primary-database11"
+primary_database_admin = "sqladmin"
+primary_database_password = "pa$$w0rd"
+primary_database_version = "12.0"
