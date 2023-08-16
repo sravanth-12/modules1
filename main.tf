@@ -1,4 +1,3 @@
-
 terraform {
   required_providers {
     azurerm = {
@@ -35,16 +34,15 @@ module "connectivity" {
     childgroupB0-ID = module.platform.childgroupB0-ID
     
 }
-module "identity" {
-    source = "./contos/platform/identity"
-    childgroupB3 = var.childgroupB3
-    childgroupB0-ID = module.platform.childgroupB0-ID
-}
 module "management" {
     source = "./contos/platform/management"
     childgroupB2 = var.childgroupB2
-    childgroupB0-ID = module.platform.childgroupB0-ID
-    
+    childgroupB0-ID = module.platform.childgroupB0-ID 
+}
+module "identity" {
+    source = "./contos/platform/identity"
+    childgroupB3 = var.childgroupB3
+    childgroupB0-ID = module.platform.childgroupB0-ID  
 }
 module "sandbox" {
     source = "./contos/sandbox"
@@ -70,34 +68,25 @@ module "businessunit2" {
     childgroupD0-ID = module.workloads.childgroupD0-ID
     
 }
-module "resource-group" {
-    source = "./rg"
+module "resourcegroup" {
+    source = "./contos/platform/connectivity/resourcegroup"
     resource-group-name = var.resource-group-name
     location = var.location
     
 }
-/*module "vnet" {
-    source = "./vnet"
-    vnet-name = var.vnet-name
-    vnet-address-space = var.vnet-address-space
-    resouce-group-name = module.resource-group.resource-group-name
-    location = module.resource-group.location
-    subnet-name = var.subnet-name
-    subnet-address-prefix = var.subnet-address-prefix
-    }*/
-    module "network" {
-        source = "./contos/platform/connectivity/Networking"
-        location = var.location
-        resource_group-name = var.resource-group-name
+   module "network" {
+        source = "./contos/platform/connectivity/network"
+        location = module.resourcegroup.location
+        resouce-group-name = module.resourcegroup.resource-group-name
         vnet-name = var.vnet-name
-        vnet-address-space = var.vne-address-space
+        vnet-address-space = var.vnet-address-space
         subnet-name = var.subnet-name
         subnet-address-prefix = var.subnet-address-prefix
     }
     module "storage" {
         source = "./contos/platform/connectivity/storage"
-        resource_group-name = var.resource_group_name
-        location = var.location
+        resource-group-name = module.resourcegroup.resource-group-name
+        location = module.resourcegroup.location
         primary_database = var.primary_database
         primary_database_admin = var.primary_database_admin
         primary_database_password = var.primary_database_password
@@ -119,6 +108,10 @@ module "resource-group" {
         publisher = var.publisher
         offer = var.offer
         OS_version = var.OS_version
+        resource_group_name = module.resourcegroup.resource-group-name
+        resource_group_location = module.resourcegroup.location
+        subnet_id = module.network.subnet_id
+        
     }
     
 module "security_rule" {
@@ -179,6 +172,6 @@ module "security_rule" {
     db-nsg-sr2-source_address_prefix = var.db-nsg-sr2-source_address_prefix
     db-nsg-sr2-source_port_range = var.app-nsg-sr2-source_port_range
     web_subnet_id = var.web_subnet_id
-    resource_group = var.resource_group
-    location = var.location 
-}
+    resource_group = module.resourcegroup.resource-group-name
+    location = module.resourcegroup.location
+} 
