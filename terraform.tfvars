@@ -94,3 +94,9 @@ primary_database = "sql-primary-database11"
 primary_database_admin = "sqladmin"
 primary_database_password = "pa$$w0rd"
 primary_database_version = "12.0"
+
+
+resource-group1-name = "identity-rg"
+location1        = "East US"
+vnet_address_space  = ["30.0.0.0/16"]
+subnet-address_prefixes   = ["30.0.0.0/24"]
