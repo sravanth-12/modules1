@@ -1,7 +1,7 @@
 variable "primary_database" {
     type = string
 }
-variable "resource_group" {
+variable "resource-group-name" {
     type = string
 }
 variable "location" {
