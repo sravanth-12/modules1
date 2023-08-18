@@ -309,12 +309,18 @@ variable "db-nsg-sr2-destination_port_range" {
 variable "primary_database" {
     type = string
 }
-/*variable "resource_group" {
+variable "resource-group1-name" {
     type = string
 }
-variable "location" {
+variable "location1" {
     type = string
-}*/
+}
+variable "vnet_address_space" {
+    type = list(string)
+}
+variable "subnet-address_prefixes" {
+    type = list(string)
+}
 variable "primary_database_version" {
     type = string
 }
