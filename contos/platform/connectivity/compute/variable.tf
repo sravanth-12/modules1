@@ -1,4 +1,3 @@
-
 variable "NIC_name" {
     type = string
     description = "Name of the Network Interface Card"
@@ -67,4 +66,15 @@ variable "vm_sku" {
 variable "OS_version" {
     type = string
     description = "OS version of virtual machine"
+}
+
+
+variable "resource_group_name" {
+    type = string
+}
+variable "resource_group_location" {
+  type=string
+}
+variable "subnet_id" {
+  type = string
 }
