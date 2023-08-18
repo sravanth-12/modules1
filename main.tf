@@ -77,9 +77,9 @@ module "resourcegroup" {
    module "network" {
         source = "./contos/platform/connectivity/network"
         location = module.resourcegroup.location
-        resouce-group-name = module.resourcegroup.resource-group-name
+        resource-group-name = module.resourcegroup.resource-group-name
         vnet-name = var.vnet-name
-        vnet-address-space = var.vnet-address-space
+        vnet_address_space = var.vnet-address-space
         subnet-name = var.subnet-name
         subnet-address-prefix = var.subnet-address-prefix
     }
@@ -174,4 +174,19 @@ module "security_rule" {
     web_subnet_id = var.web_subnet_id
     resource_group = module.resourcegroup.resource-group-name
     location = module.resourcegroup.location
-} 
+}
+
+module "resourcegroup1" {
+    source = "./contos/platform/identity/resourcegroup1"
+    resource-group1-name = var.resource-group1-name
+    location1 = var.location1 
+}
+module "Networking1" {
+    source = "./contos/platform/identity/network"
+    resource-group1-name = module.resourcegroup1.resource-group1-name
+    location1 = module.resourcegroup1.location1
+    vnet-name = var.vnet-name
+    vnet_address_space = var.vnet_address_space
+    subnet-name = var.subnet-name
+    subnet-address_prefixes = var.subnet-address_prefixes
+    }
