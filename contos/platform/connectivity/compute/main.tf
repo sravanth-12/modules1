@@ -1,12 +1,11 @@
-
 resource "azurerm_network_interface" "vnet" {
   name                = var.NIC_name
-  location            = azurerm_resource_group.resource-group.location
-  resource_group_name = azurerm_resource_group.resource-group.name
+  location            = var.resource_group_location
+  resource_group_name = var.resource_group_name
 
   ip_configuration {
     name                          = var.ip_configuration_name
-    subnet_id                     = azurerm_subnet.vnet.id
+    subnet_id                     =var.subnet_id
     private_ip_address_allocation = var.IP_allocation
   }
 }
@@ -18,8 +17,8 @@ resource "tls_private_key" "ssh" {
 
 resource "azurerm_linux_virtual_machine" "virtual-machine" {
   name                = var.vm_name
-  resource_group_name = azurerm_resource_group.resource-group.name
-  location            = azurerm_resource_group.resource-group.location
+  resource_group_name = var.resource_group_name
+  location            = var.resource_group_location
   size                = var.size
   admin_username      = var.username
   network_interface_ids = [
@@ -46,4 +45,3 @@ resource "azurerm_linux_virtual_machine" "virtual-machine" {
     version   = var.OS_version
   }
 }
-
