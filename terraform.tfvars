@@ -100,3 +100,8 @@ resource-group1-name = "identity-rg"
 location1        = "East US"
 vnet_address_space  = ["30.0.0.0/16"]
 subnet-address_prefixes   = ["30.0.0.0/24"]
+
+primary_database1 = "sql-primary-database1"
+primary_database1_admin = "sqladmin"
+primary_database1_password = "pa$$w0rd"
+primary_database1_version = "12.0"
