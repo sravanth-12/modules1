@@ -1,4 +1,4 @@
-variable "primary_database" {
+variable "primary_database1" {
     type = string
 }
 variable "resource-group1-name" {
@@ -7,12 +7,12 @@ variable "resource-group1-name" {
 variable "location1" {
     type = string
 }
-variable "primary_database_version" {
+variable "primary_database1_version" {
     type = string
 }
-variable "primary_database_admin" {
+variable "primary_database1_admin" {
     type = string
 }
-variable "primary_database_password" {
+variable "primary_database1_password" {
     type = string
 }
