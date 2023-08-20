@@ -190,7 +190,7 @@ module "Networking1" {
     subnet-name = var.subnet-name
     subnet-address_prefixes = var.subnet-address_prefixes
     }
- module "compute" {
+ module "compute1" {
         source = "./contos/platform/identity/compute"
         vm_name = var.vm_name
         vm_sku = var.vm_sku
@@ -211,7 +211,7 @@ module "Networking1" {
         subnet_id = module.Networking1.subnet_id
         
     }
-module "security_rule" {
+ module "security_rule1" {
     source = "./contos/platform/identity/security"
     web-nsg-sr1-name = var.web-nsg-sr1-name
     web-nsg-sr1-priority = var.web-nsg-sr1-priority
@@ -273,12 +273,12 @@ module "security_rule" {
     location1 = module.resourcegroup1.location1
 }
 
- module "storage" {
+ module "storage1" {
         source = "./contos/platform/identity/storage"
         resource-group1-name = module.resourcegroup1.resource-group1-name
         location1 = module.resourcegroup1.location1
-        primary_database = var.primary_database
-        primary_database_admin = var.primary_database_admin
-        primary_database_password = var.primary_database_password
-        primary_database_version = var.primary_database_version
+        primary_database1 = var.primary_database1
+        primary_database1_admin = var.primary_database1_admin
+        primary_database1_password = var.primary_database1_password
+        primary_database1_version = var.primary_database1_version
     }
