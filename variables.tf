@@ -336,4 +336,15 @@ variable "primary_database_password" {
     type = string
 }
 
-
+variable "primary_database1" {
+    type = string
+}
+variable "primary_database1_version" {
+    type = string
+}
+variable "primary_database1_admin" {
+    type = string
+}
+variable "primary_database1_password" {
+    type = string
+}
