@@ -11,10 +11,11 @@ provider "azurerm" {
    features {
 }
 skip_provider_registration = true
-subscription_id = "91e9f238-396d-4de8-b851-c0465f790b4a"
-tenant_id = "47d7e33c-9155-404f-914e-6610aa428fcc"
-client_id = "628bff83-7ddb-4a7c-b44a-6eaf688741c1"
-client_secret = "vbq8Q~K4zb80md3BlTdC2capgkkUhoASVYoLqco0"
+subscription_id = "a1085f45-3c41-4277-b3a7-cd100aaffb99"
+tenant_id = "750f2040-ab7f-42ed-8001-36ba05e30750"
+client_id = "21813310-5b23-4500-9050-c99a2594cf40"
+client_secret = "Zx88Q~9xcvhOUoN9l6DlM3H6ctv4hX~G64xFMb6M"
+
  
 }
 module "contos" {
